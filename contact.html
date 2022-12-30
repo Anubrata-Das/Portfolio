@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anubrata Das - Programmer </title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar sidebarGo">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/intro.html">Intro</a></li>
+                    <!-- <li><a href="/services.html">Services</a></li> -->
+                    <!-- <li><a href="/blog.html">Blog</a></li> -->
+                    <li><a href="/contact.html">Contact me</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="hamburger">
+                <img class="ham" src="ham.png" alt="" srcset="" width="20px">
+                <img class="cross" src="cross.png" alt="" srcset="" width="20px">
+            </div>
+            <div class="contactform">
+                <h1>Contact me for work/General Enquires</h1>
+                <!-- <form method="post" action="https://formspree.io/f/mrgdzkab"> -->
+                <form action="javascript:sendEmail()" method="post">
+                    <div class="form-group">
+                        <label for="clientphone">Name</label>
+                        <input type="name" class="form-control" id="clientname" name="Name"
+                            placeholder="Enter Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientemail">Email address</label>
+                        <input type="email" class="form-control" id="clientemail" name="Email"
+                            aria-describedby="emailHelp" placeholder="Enter email" required>
+
+                        <p></p><small id="emailHelp" class="form-text text-muted">We'll never share your email & phone
+                            with anyone
+                            else.</small></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientphone">Phone</label>
+                        <input type="phone" class="form-control" id="clientphone" name="phone" placeholder="phone"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientphone">Enquiry</label>
+                        <input type="text" class="form-control" id="clientenquiry" name="Enquiry">
+                    </div>
+                    <div class="form-group form-check" id="form-check">
+                        <input type="checkbox" class="form-check-input" id="isclient" name="Check">
+                        <label class="form-check-label" for="isclient">I Want you to work on a project with me</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-sm">Submit</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function sendEmail(){
+            
+            var name=$('#clientname').val();
+            var email=$('#clientemail').val();
+            var phone=$('#clientphone').val();
+            var Enquiry=$('#clientenquiry').val();
+            var check=$('#isclient').val();
+            
+            var Body = 'Name:  '+name+'<br>email:  '+email+'<br>phone:  '+phone+'<br>enquiry:  '+Enquiry+'<br>check:  '+check;
+            
+            Email.send({
+                SecureToken:"375d0dcd-00ca-46f9-9bcf-147f2db5857f",
+                To: 'anubratadas082@gmail.com',
+                From: "anubratadas092@gmail.com ",
+                Subject: "CONTACT FROM: "+name,
+                Body: Body
+            }).then(
+                message => {
+                    if(message=='OK'){
+                        alert('Thank You your form has been sent successfully');
+                    }
+                    else{
+                        console.error(message);
+                        alert('There is a error ! please fill out correctly ')
+                    }
+                }
+            );
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
